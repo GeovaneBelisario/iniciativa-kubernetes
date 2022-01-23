@@ -1,0 +1,4 @@
+Release {{ .Release.Name }} aplicado com sucesso!!!
+
+Pra acessar, verifique o service executando o comando abaixo:
+kubectl get service {{ .Release.Name }}-web

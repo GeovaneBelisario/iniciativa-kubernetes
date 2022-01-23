@@ -1,0 +1,23 @@
+apiVersion: v1 #grupo de apis q vai usar no kubernetes, execute `kubectl api-resources` para saber
+kind: Pod
+metadata:
+  name: meupod
+spec:
+  containers:
+    - name: web
+      image: kubedevio/web-page:blue
+      ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: meusegundopod
+  labels: #é atraves do label que um objeto consegue interagir com o outro usando o selector
+    app: web
+spec:
+  containers:
+  - name: web
+    image: kubedevio/web-page:blue
+    ports:
+      - containerPort: 80

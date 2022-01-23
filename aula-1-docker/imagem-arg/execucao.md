@@ -1,0 +1,1 @@
+docker build -t geovanebelisario/ubuntu-arg:v1 --build-arg TAG="18.04" .

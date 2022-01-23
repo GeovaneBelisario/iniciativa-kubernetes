@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+   #nome do deployment tem que ser parametrizado, pois a cada release tem q ter um nome diferente, pois pode dar problema no kubernetes
+  name: {{ .Release.Name }}-mongodb
+spec:
+  selector:
+    matchLabels:
+      # pra cada deployment tem que ter uma label especifica, senão uma release pode pegar dados de outra
+      app: {{ .Chart.Name }}-{{ .Release.Name }}-mongodb
+  template:
+    metadata:
+      labels:
+        app: {{ .Chart.Name }}-{{ .Release.Name }}-mongodb
+    spec:
+      containers:
+      #nome do container não precisa, pois é um dado isolado
+      - name: container-mongodb
+        image: mongo:{{ .Values.mongodb.imageTag }}
+        ports:
+        - containerPort: 27017
+        env:
+        # usuario e senha pode mudar de uma release pra outra
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          value: {{ .Values.mongodb.password }}
+        - name: MONGO_INITDB_ROOT_USERNAME
+          value: {{ .Values.mongodb.user }}

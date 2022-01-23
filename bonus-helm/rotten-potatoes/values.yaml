@@ -1,0 +1,11 @@
+mongodb:
+  imageTag: 4.4.6
+  user: mongouser
+  password: mongopwd
+
+web:
+  imageName: geovanebelisario/rotten-potatoes
+  imageTag: v1
+  service:
+    type: NodePort
+    nodePort: 
