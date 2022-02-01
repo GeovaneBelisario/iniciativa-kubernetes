@@ -91,8 +91,8 @@ Cluster local
 - `k3d cluster create meucluster (criar o cluster com apenas 1 container = 1 maquina no cluster)`
 - `opcional: k3d cluster create meucluster --no-lb (sem proxy, sem loadbalancer entre os nós no k3d)`
 
-- `kd3 cluster list (listar clusters)`
-- `kd3 cluster delete 'nomecluster'`
+- `k3d cluster list (listar clusters)`
+- `k3d cluster delete 'nomecluster'`
 
 Simular ambiente com alta disponibilidade, semelhante ao cenário do mundo real:
 - `k3d cluster create meucluster --servers 3 --agents 3`
